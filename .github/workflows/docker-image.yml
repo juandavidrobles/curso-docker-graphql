@@ -31,6 +31,7 @@ jobs:
         run: |
           echo "Building docker image"
           docker build -t juandavidrobles/curso-docker-graphql:0.0.1 .
+          docker build -t juandavidrobles/curso-docker-graphql:latest .
           echo "Docker image built"
 
       - 
@@ -38,6 +39,7 @@ jobs:
         run: |
           echo "Pushing image to Docker hub"
           docker push juandavidrobles/curso-docker-graphql:0.0.1
+          docker push juandavidrobles/curso-docker-graphql:latest
           echo "Image pushed to Docker hub"
 
 
