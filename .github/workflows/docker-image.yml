@@ -46,8 +46,8 @@ jobs:
           echo "Docker image built"
 
       - name: Docker image push
-      env:
-        VERSION: ${{steps.version.outputs.version}}
+        env:
+          VERSION: ${{steps.version.outputs.version}}
         run: |
           echo "Pushing image to Docker hub"
           docker push juandavidrobles/curso-docker-graphql:$VERSION
