@@ -17,7 +17,7 @@ jobs:
           fetch-depth: 0
         # run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
 
-      - name: Login
+      - name: Docker Login
         env:
           DOCKER_USER: ${{secrets.DOCKER_USER}}
           DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
@@ -25,3 +25,22 @@ jobs:
           echo "Starting login"
           docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
           echo "Login succesful"
+
+      - 
+        name: Build docker image
+        run: |
+          echo "Building docker image"
+          docker build -t juandavidrobles/curso-docker-graphql:0.0.1 .
+          echo "Docker image built"
+
+      - 
+        name: Docker image push
+        run: |
+          echo "Pushing image to Docker hub"
+          docker push juandavidrobles/curso-docker-graphql:0.0.1
+          echo "Image pushed to Docker hub"
+
+
+
+        
+
